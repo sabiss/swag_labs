@@ -22,11 +22,8 @@ export class TodoPage{
         await this.inputDeTarefa.press('Enter');
     }
 
-    async concluirTarefa(tarefa: TarefaComponent){
-        await tarefa.concluirTarefa();
-    }
-
-    async deletarTarefa(tarefa: TarefaComponent){
-        await tarefa.deletarTarefa();
+    obterTarefa(nomeDaTarefa: string): TarefaComponent {
+        const locatorDaTarefa = this.listaDeTarefas.filter({ hasText: nomeDaTarefa });
+        return new TarefaComponent(locatorDaTarefa);
     }
 }

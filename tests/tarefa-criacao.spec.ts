@@ -9,6 +9,10 @@ test.describe('Criação de uma Tarefa', ()=>{
         await todoPage.acessarPagina();
 
         await todoPage.criarNovaTarefa(mensagemDaTarefa);
-        await expect(todoPage.listaDeTarefas).toHaveText(mensagemDaTarefa);
+        const tarefaCriada = todoPage.obterTarefa(mensagemDaTarefa);
+
+        await expect(tarefaCriada.tarefa).toBeVisible()
+        await expect(tarefaCriada.tarefa).toHaveText(mensagemDaTarefa)
+        await expect(tarefaCriada.checkbox).not.toBeChecked()
     })
 })
