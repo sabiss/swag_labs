@@ -13,7 +13,7 @@ export class TodoPage{
     }
 
     async acessarPagina(){
-        await this.page.goto("https://demo.playwright.dev/todomvc/#/");
+        await this.page.goto('/');
     }
 
     async criarNovaTarefa(mensagemTarefa: string){
