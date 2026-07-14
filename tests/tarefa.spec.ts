@@ -3,10 +3,14 @@ import { TodoPage } from '../pages/todoPage';
 
 const mensagemDaTarefa: string = "Comprar leite";
 
-test.describe('Criação de uma Tarefa', ()=>{
+test.describe('Suite de Testes de Tarefas', ()=>{
+    test.beforeEach(async ({ page }) => {
+        const todoPage = new TodoPage(page);
+        await todoPage.acessarPagina();
+    });
+
     test('Criar tarefa', async({page})=>{
         const todoPage: TodoPage = new TodoPage(page);
-        await todoPage.acessarPagina();
 
         await todoPage.criarNovaTarefa(mensagemDaTarefa);
         const tarefaCriada = todoPage.obterTarefa(mensagemDaTarefa);
