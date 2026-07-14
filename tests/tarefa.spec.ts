@@ -30,12 +30,16 @@ test.describe('Suite de Testes de Tarefas', ()=>{
     })
 
     test('Deletar tarefa', async ({page}) => {
-        const todoPage: TodoPage = new TodoPage(page);
-
-        await todoPage.criarNovaTarefa(mensagemDaTarefa);
-        const tarefaCriada = todoPage.obterTarefa(mensagemDaTarefa);
-
         await tarefaCriada.deletarTarefa();
         await expect(tarefaCriada.tarefa).not.toBeVisible();
+    })
+
+    test('Concluir Tarefa', async ({page}) => {
+        await tarefaCriada.concluirTarefa();
+        const tarefaConcluida =  page.getByRole('listitem').filter({hasText: mensagemDaTarefa});
+        const textoRiscado = tarefaConcluida.getByText(mensagemDaTarefa);
+
+        await expect(tarefaConcluida).toHaveClass('completed');
+        await expect(textoRiscado).toHaveCSS('text-decoration', /line-through/)
     })
 })
