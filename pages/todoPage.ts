@@ -13,7 +13,7 @@ export class TodoPage{
     }
 
     async acessarPagina(){
-        await this.page.goto('/');
+        await this.page.goto('/todomvc/#/');
     }
 
     async criarNovaTarefa(mensagemTarefa: string){

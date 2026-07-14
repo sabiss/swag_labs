@@ -33,7 +33,7 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    baseURL: 'https://demo.playwright.dev/todomvc/#/',
+    baseURL: 'https://demo.playwright.dev',
     trace: 'retain-on-failure',       // Salva o raio-x se quebrar
     screenshot: 'only-on-failure',    // Tira print se quebrar
     video: 'retain-on-failure'
