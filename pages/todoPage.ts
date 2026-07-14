@@ -17,12 +17,13 @@ export class TodoPage{
     }
 
     async criarNovaTarefa(mensagemTarefa: string){
-        const tarefa = new TarefaComponent(this.page, mensagemTarefa);
-        await tarefa.adicionarTarefa();
+        await this.inputDeTarefa.click();
+        await this.inputDeTarefa.fill(mensagemTarefa);
+        await this.inputDeTarefa.press('Enter');
     }
 
-    obterTarefa(nomeDaTarefa: string): Locator {
-        const locatorDaTarefa: Locator = this.listaDeTarefas.filter({ hasText: nomeDaTarefa });
-        return locatorDaTarefa;
+    obterTarefa(nomeDaTarefa: string): TarefaComponent {
+        const locatorDaTarefa = this.listaDeTarefas.filter({ hasText: nomeDaTarefa });
+        return new TarefaComponent(locatorDaTarefa);
     }
 }
