@@ -36,7 +36,10 @@ export default defineConfig({
     baseURL: 'https://demo.playwright.dev',
     trace: 'retain-on-failure',       // Salva o raio-x se quebrar
     screenshot: 'only-on-failure',    // Tira print se quebrar
-    video: 'retain-on-failure'
+    video: 'retain-on-failure',
+    launchOptions: {
+      slowMo: 1000, 
+    },
   },
 
   /* Configure projects for major browsers */
