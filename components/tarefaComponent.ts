@@ -18,7 +18,9 @@ export class TarefaComponent{
     }
 
     async concluirTarefa(){
-        const checkBoxConclusao: Locator = this.page.getByRole('listitem').filter({hasText: this.texto}).getByRole('checkbox');
+        const checkBoxConclusao: Locator = this.page.getByRole('listitem')
+                                                    .filter({hasText: this.texto})
+                                                    .getByRole('checkbox');
         await checkBoxConclusao.check();
     }
     
