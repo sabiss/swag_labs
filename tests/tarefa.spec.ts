@@ -19,4 +19,14 @@ test.describe('Suite de Testes de Tarefas', ()=>{
         await expect(tarefaCriada.tarefa).toHaveText(mensagemDaTarefa)
         await expect(tarefaCriada.checkbox).not.toBeChecked()
     })
+
+    test('Deletar tarefa', async ({page}) => {
+        const todoPage: TodoPage = new TodoPage(page);
+
+        await todoPage.criarNovaTarefa(mensagemDaTarefa);
+        const tarefaCriada = todoPage.obterTarefa(mensagemDaTarefa);
+
+        await tarefaCriada.deletarTarefa();
+        await expect(tarefaCriada.tarefa).not.toBeVisible();
+    })
 })
